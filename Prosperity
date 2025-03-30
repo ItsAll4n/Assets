@@ -491,7 +491,7 @@ function Prosperity.CreateLib(prosName)
                 tname = tname or "Textbox"
                 callback = callback or function() end
 
-                local textboxElement = Instance.new("TextButton")
+                local textboxElement = Instance.new("TextLabel")
                 local write = Instance.new("ImageLabel")
                 local coverup = Instance.new("Frame")
                 local TextBox = Instance.new("TextBox")
