@@ -408,7 +408,7 @@ function Prosperity.CreateLib(Prosperityname)
                 togLabel.BorderSizePixel = 0
                 togLabel.Size = UDim2.new(0, 150, 0, 50)
                 togLabel.Font = Enum.Font.Code
-                togLabel.Text = "One-shot"
+                togLabel.Text = tname
                 togLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
                 togLabel.TextSize = 14.000
 
