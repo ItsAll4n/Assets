@@ -1,0 +1,506 @@
+local tween = game:GetService("TweenService")
+local tweeninfo = TweenInfo.new
+local input = game:GetService("UserInputService")
+local run = game:GetService("RunService")
+
+local Prosperity = {}
+
+function Prosperity:EnableDrag(frame, parent)
+        
+    parent = parent or frame;
+    
+    local dragging = false;
+    local dragInput, mousePos, framePos;
+
+    frame.InputBegan:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseButton1 then
+            dragging = true;
+            mousePos = input.Position;
+            framePos = parent.Position;
+            
+            input.Changed:Connect(function()
+                if input.UserInputState == Enum.UserInputState.End then
+                    dragging = false;
+                end;
+            end);
+        end;
+    end);
+
+    frame.InputChanged:Connect(function(input)
+        if input.UserInputType == Enum.UserInputType.MouseMovement then
+            dragInput = input;
+        end;
+    end);
+
+    input.InputChanged:Connect(function(input)
+        if input == dragInput and dragging then
+            local delta = input.Position - mousePos;
+            parent.Position  = UDim2.new(framePos.X.Scale, framePos.X.Offset + delta.X, framePos.Y.Scale, framePos.Y.Offset + delta.Y);
+        end;
+    end);
+end;
+
+local Name = "Prosperity.JSON";
+
+pcall(function()
+    if not pcall(function() readfile(Name) end) then
+        writefile(Name, game:service'HttpService':JSONEncode(SettingsT));
+    end;
+
+    Settings = game:service'HttpService':JSONEncode(readfile(Name));
+end);
+
+local LibName = tostring(math.random(1, 100))..tostring(math.random(1,50))..tostring(math.random(1, 100));
+
+function Prosperity:ToggleUI()
+    if game.CoreGui[LibName].Enabled then
+        game.CoreGui[LibName].Enabled = false;
+    else
+        game.CoreGui[LibName].Enabled = true;
+    end;
+end;
+
+function Prosperity.CreateLib(Prosperityname)
+    table.insert(Prosperity, Prosperityname);
+
+    for i, v in pairs(game.CoreGui:GetChildren()) do
+        if v:IsA("ScreenGui") and v.Name == Prosperityname then
+            v:Destroy();
+        end;
+    end;
+
+    local ScreenGui = Instance.new("ScreenGui")
+    local Holder = Instance.new("Frame")
+    local Bottom = Instance.new("Frame")
+    local Footnote = Instance.new("TextLabel")
+    local Sidebar = Instance.new("Frame")
+    local SideLayout = Instance.new("UIListLayout")
+    local TabsFolder = Instance.new("Folder")
+    local TabHolder = Instance.new("Frame")
+    local TabLayout = Instance.new("UIListLayout")
+    local Top = Instance.new("Frame")
+    local GUITitle = Instance.new("TextLabel")
+    local TabTitle = Instance.new("TextLabel")
+    local Outlines = Instance.new("Folder")
+    local SOutline = Instance.new("Frame")
+    local BOutline = Instance.new("Frame")
+    local DOutline = Instance.new("Frame")
+    local ROutline = Instance.new("Frame")
+    local HolderOutline = Instance.new("Frame")
+    local OutlineCorner = Instance.new("UICorner")
+
+    Prosperity:EnableDrag(Top, Holder)
+
+    ScreenGui.Parent = game.CoreGui
+    ScreenGui.Name = LibName
+    ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    ScreenGui.ResetOnSpawn = false
+
+    Holder.Name = "Holder"
+    Holder.Parent = ScreenGui
+    Holder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    Holder.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Holder.BorderSizePixel = 0
+    Holder.Position = UDim2.new(0.47889024, 0, 0.183417082, 0)
+    Holder.Size = UDim2.new(0, 500, 0, 450)
+
+    Bottom.Name = "Bottom"
+    Bottom.Parent = Holder
+    Bottom.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    Bottom.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Bottom.BorderSizePixel = 0
+    Bottom.Position = UDim2.new(0, 0, 0.957777798, 0)
+    Bottom.Size = UDim2.new(0, 500, 0, 19)
+
+    Footnote.Name = "Footnote"
+    Footnote.Parent = Bottom
+    Footnote.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    Footnote.BackgroundTransparency = 1.000
+    Footnote.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Footnote.BorderSizePixel = 0
+    Footnote.Position = UDim2.new(0.275999993, 0, -0.130904347, 0)
+    Footnote.Size = UDim2.new(0, 221, 0, 22)
+    Footnote.Font = Enum.Font.Code
+    Footnote.Text = "Thanks for using Prosperity <3"
+    Footnote.TextColor3 = Color3.fromRGB(150, 150, 150)
+    Footnote.TextSize = 12.000
+
+    Sidebar.Name = "Sidebar"
+    Sidebar.Parent = Holder
+    Sidebar.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    Sidebar.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Sidebar.BorderSizePixel = 0
+    Sidebar.Position = UDim2.new(0, 0, 0.086666666, 0)
+    Sidebar.Size = UDim2.new(0, 100, 0, 392)
+
+    SideLayout.Name = "SideLayout"
+    SideLayout.Parent = Sidebar
+    SideLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+    TabsFolder.Name = "Tabs"
+    TabsFolder.Parent = Holder
+
+    TabHolder.Name = "TabHolder"
+    TabHolder.Parent = TabsFolder
+    TabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TabHolder.BackgroundTransparency = 1.000
+    TabHolder.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    TabHolder.BorderSizePixel = 0
+    TabHolder.Position = UDim2.new(0.200000003, 0, 0.086666666, 0)
+    TabHolder.Size = UDim2.new(0, 400, 0, 392)
+
+    TabLayout.Name = "TabLayout"
+    TabLayout.Parent = TabHolder
+    TabLayout.FillDirection = Enum.FillDirection.Horizontal
+    TabLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+    Top.Name = "Top"
+    Top.Parent = Holder
+    Top.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+    Top.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    Top.BorderSizePixel = 0
+    Top.Size = UDim2.new(0, 500, 0, 39)
+
+    GUITitle.Name = "GUITitle"
+    GUITitle.Parent = Top
+    GUITitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    GUITitle.BackgroundTransparency = 1.000
+    GUITitle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    GUITitle.BorderSizePixel = 0
+    GUITitle.Position = UDim2.new(0.0359999985, 0, -0.025641026, 0)
+    GUITitle.Size = UDim2.new(0, 61, 0, 39)
+    GUITitle.Font = Enum.Font.Code
+    GUITitle.Text = "Prosperity"
+    GUITitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+    GUITitle.TextSize = 12.000
+
+    TabTitle.Name = "TabTitle"
+    TabTitle.Parent = Top
+    TabTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TabTitle.BackgroundTransparency = 1.000
+    TabTitle.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    TabTitle.BorderSizePixel = 0
+    TabTitle.Position = UDim2.new(0.44600001, 0, -0.051282052, 0)
+    TabTitle.Size = UDim2.new(0, 136, 0, 39)
+    TabTitle.Font = Enum.Font.Code
+    TabTitle.Text = ""
+    TabTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TabTitle.TextSize = 15.000
+
+    Outlines.Name = "Outlines"
+    Outlines.Parent = Holder
+
+    SOutline.Name = "SOutline"
+    SOutline.Parent = Outlines
+    SOutline.BackgroundColor3 = Color3.fromRGB(61, 61, 61)
+    SOutline.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    SOutline.BorderSizePixel = 0
+    SOutline.Position = UDim2.new(0.195999995, 0, 0, 0)
+    SOutline.Size = UDim2.new(0, 2, 0, 431)
+
+    BOutline.Name = "BOutline"
+    BOutline.Parent = Outlines
+    BOutline.BackgroundColor3 = Color3.fromRGB(61, 61, 61)
+    BOutline.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    BOutline.BorderSizePixel = 0
+    BOutline.Position = UDim2.new(-0.00400000019, 0, 0.953333318, 0)
+    BOutline.Size = UDim2.new(0, 505, 0, 2)
+
+    DOutline.Name = "DOutline"
+    DOutline.Parent = Outlines
+    DOutline.BackgroundColor3 = Color3.fromRGB(61, 61, 61)
+    DOutline.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    DOutline.BorderSizePixel = 0
+    DOutline.Position = UDim2.new(-0.00400000019, 0, 0.0822222233, 0)
+    DOutline.Size = UDim2.new(0, 502, 0, 2)
+
+    ROutline.Name = "ROutline"
+    ROutline.Parent = Outlines
+    ROutline.BackgroundColor3 = Color3.fromRGB(61, 61, 61)
+    ROutline.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    ROutline.BorderSizePixel = 0
+    ROutline.Position = UDim2.new(0.995999992, 0, 0, 0)
+    ROutline.Size = UDim2.new(0, 2, 0, 37)
+
+    HolderOutline.Name = "HolderOutline"
+    HolderOutline.Parent = Outlines
+    HolderOutline.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    HolderOutline.BorderColor3 = Color3.fromRGB(0, 0, 0)
+    HolderOutline.BorderSizePixel = 0
+    HolderOutline.Position = UDim2.new(0.5, -252, 0.5, -227)
+    HolderOutline.Size = UDim2.new(0, 505, 0, 455)
+    HolderOutline.ZIndex = 0
+
+    OutlineCorner.CornerRadius = UDim.new(0, 5)
+    OutlineCorner.Name = "OutlineCorner"
+    OutlineCorner.Parent = HolderOutline
+
+    local Tabs = {}
+
+    function Tabs:NewTab(tabName)
+        tabName = tabName or "Tab"
+
+        local TabButton = Instance.new("TextButton")
+        local TabFrame = Instance.new("ScrollingFrame")
+        local UIListLayout = Instance.new("UIListLayout")
+
+        UIListLayout.Parent = TabFrame
+        UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+        UIListLayout.Padding = UDim.new(0, 4)
+
+        TabFrame.Parent = TabHolder
+        TabFrame.Active = true
+        TabFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+        TabFrame.BackgroundTransparency = 0.7
+        TabFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        TabFrame.BorderSizePixel = 0
+        TabFrame.Position = UDim2.new(-0.0225000009, 0, -0.00255102036, 0)
+        TabFrame.Size = UDim2.new(0, 200, 0, 392)
+        TabFrame.CanvasPosition = Vector2.new(0, 0)
+        TabFrame.ScrollBarThickness = 0
+        TabFrame.Name = tabName.." Holder"
+        TabFrame.Visible = false
+
+        TabButton.Parent = Sidebar
+        TabButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        TabButton.BackgroundTransparency = 1.000
+        TabButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        TabButton.BorderSizePixel = 0
+        TabButton.Size = UDim2.new(0, 98, 0, 35)
+        TabButton.Font = Enum.Font.Code
+        TabButton.Text = tabName
+        TabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+        TabButton.TextSize = 14.000
+        TabButton.Name = tabName
+
+        table.insert(Tabs, tabName)
+
+        TabButton.MouseButton1Click:Connect(function()
+            for i, v in pairs(TabHolder:GetChildren()) do
+                if v:IsA("ScrollingFrame") then
+                    v.Visible = false
+                end
+            end;
+            TabTitle.Text = tabName
+            TabFrame.Visible = true
+        end)
+
+        local Sections = {}
+
+        function Sections:NewSection(secName, par)
+            secName = secName or "Section"
+            
+            local SectionLabel = Instance.new("TextLabel")
+
+            SectionLabel.Parent = TabHolder:FindFirstChild(par.." Holder")
+            SectionLabel.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+            SectionLabel.BackgroundTransparency = 0.800
+            SectionLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+            SectionLabel.BorderSizePixel = 0
+            SectionLabel.Size = UDim2.new(0, 200, 0, 35)
+            SectionLabel.Font = Enum.Font.Code
+            SectionLabel.Text = "Tweaks"
+            SectionLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+            SectionLabel.TextSize = 14.000
+
+            local Elements = {}
+
+            function Elements:NewButton(bName, par, callback)
+                local bName = bName or "Button"
+                callback = callback or function() end
+                local btn = Instance.new("TextButton")
+                local btnImage = Instance.new("ImageLabel")
+
+                btn.Parent = TabHolder:FindFirstChild(par.." Holder")
+                btn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+                btn.BackgroundTransparency = 0.800
+                btn.BorderColor3 = Color3.fromRGB(255, 255, 255)
+                btn.Size = UDim2.new(0, 200, 0, 50)
+                btn.Font = Enum.Font.Code
+                btn.Text = bName
+                btn.TextColor3 = Color3.fromRGB(255, 255, 255)
+                btn.TextSize = 14.000
+
+                btnImage.Name = "Fingerprint"
+                btnImage.Parent = TextButton
+                btnImage.BackgroundTransparency = 1.000
+                btnImage.Position = UDim2.new(0.0662050471, 0, 0.25999999, 0)
+                btnImage.Size = UDim2.new(0, 24, 0, 24)
+                btnImage.Image = "rbxassetid://8445470826"
+                btnImage.ImageRectOffset = Vector2.new(204, 104)
+                btnImage.ImageRectSize = Vector2.new(96, 96)
+
+                btn.MouseButton1Click:Connect(function()
+                    callback()
+                end)
+            end;
+
+            function Elements:NewTextBox(tname, par, callback)
+                tname = tname or "Textbox"
+                callback = callback or function() end
+                local tbox = Instance.new("TextBox")
+                local TextFields = Instance.new("ImageLabel")
+                local textboxFrame = Instance.new("Frame")
+
+                textboxFrame.Parent = TabHolder:FindFirstChild(par.." Holder")
+                textboxFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+                textboxFrame.BackgroundTransparency = 0.800
+                textboxFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                textboxFrame.Position = UDim2.new(0, 0, 0.237244904, 0)
+                textboxFrame.Size = UDim2.new(0, 200, 0, 50)
+                textboxFrame.Name = tname
+
+                tbox.Parent = textboxFrame
+                tbox.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+                tbox.BackgroundTransparency = 1.000
+                tbox.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                tbox.BorderSizePixel = 0
+                tbox.Position = UDim2.new(0.251256287, 0, 0, 0)
+                tbox.Size = UDim2.new(0, 150, 0, 50)
+                tbox.Font = Enum.Font.Code
+                tbox.PlaceholderColor3 = Color3.fromRGB(255, 255, 255)
+                tbox.PlaceholderText = "Type Here."
+                tbox.Text = ""
+                tbox.TextColor3 = Color3.fromRGB(255, 255, 255)
+                tbox.TextSize = 12.000
+                tbox.TextXAlignment = Enum.TextXAlignment.Left
+
+                TextFields.Name = "TextFields"
+                TextFields.Parent = tbox
+                TextFields.BackgroundTransparency = 1.000
+                TextFields.Position = UDim2.new(-0.25333333, 0, 0.239999995, 0)
+                TextFields.Size = UDim2.new(0, 25, 0, 25)
+                TextFields.Image = "rbxassetid://8445470189"
+                TextFields.ImageRectOffset = Vector2.new(4, 804)
+                TextFields.ImageRectSize = Vector2.new(96, 96)
+
+                tbox.FocusLost:Connect(function(EnterPressed)
+                    if not EnterPressed then
+                        return
+                    else
+                        callback(tbox.Text)
+                        wait(0.18)
+                        tbox.Text = ""
+                    end
+                end)
+            end
+            
+            function Elements:NewToggle(tname, par, callback)
+                tname = tname or "Toggle"
+                local toggleFrame = Instance.new("Frame")
+                local togLabel = Instance.new("TextLabel")
+                local togButton = Instance.new("ImageButton")
+                local Check = Instance.new("ImageLabel")
+                local toggled = false
+
+                toggleFrame.Parent = TabHolder:FindFirstChild(par.." Holder")
+                toggleFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+                toggleFrame.BackgroundTransparency = 0.800
+                toggleFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                toggleFrame.Position = UDim2.new(0, 0, 0.375, 0)
+                toggleFrame.Size = UDim2.new(0, 200, 0, 50)
+
+                togLabel.Name = "Label"
+                togLabel.Parent = toggleFrame
+                togLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                togLabel.BackgroundTransparency = 1.000
+                togLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                togLabel.BorderSizePixel = 0
+                togLabel.Size = UDim2.new(0, 150, 0, 50)
+                togLabel.Font = Enum.Font.Code
+                togLabel.Text = "One-shot"
+                togLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+                togLabel.TextSize = 14.000
+
+                togButton.Parent = togLabel
+                togButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                togButton.BackgroundTransparency = 1.000
+                togButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                togButton.BorderSizePixel = 0
+                togButton.Position = UDim2.new(1, 0, 0.138291016, 0)
+                togButton.Size = UDim2.new(0, 35, 0, 35)
+                togButton.Image = "rbxassetid://8445519745"
+                togButton.ImageRectOffset = Vector2.new(940, 784)
+                togButton.ImageRectSize = Vector2.new(48, 48)
+
+                Check.Name = "Check"
+                Check.Parent = togButton
+                Check.BackgroundTransparency = 1.000
+                Check.Position = UDim2.new(0.142857149, 0, 0.142857149, 0)
+                Check.Size = UDim2.new(0, 24, 0, 24)
+                Check.Image = "rbxassetid://8445471173"
+                Check.ImageRectOffset = Vector2.new(504, 604)
+                Check.ImageRectSize = Vector2.new(96, 96)
+                Check.Visible = false
+
+                togButton.MouseButton1Click(function()
+                    if not toggled then
+                        Check.Visible = true
+                    else
+                        Check.Visible = false
+                    end
+                    toggled = not toggled
+                    pcall(callback, toggled)
+                end)
+            end
+
+            function Elements:KeyBind(kname, par, first, callback)
+                kname = kname or "Keybind"
+                local oldKey = first.Name
+                local keybindFrame = Instance.new("Frame")
+                local keybindLabel = Instance.new("TextLabel")
+                local keybindButton = Instance.new("TextButton")
+
+                keybindFrame.Parent = TabHolder:FindFirstChild(par.." Holder")
+                keybindFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+                keybindFrame.BackgroundTransparency = 0.800
+                keybindFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                keybindFrame.Position = UDim2.new(0, 0, 0.502551019, 0)
+                keybindFrame.Size = UDim2.new(0, 200, 0, 50)
+
+                keybindLabel.Parent = keybindFrame
+                keybindLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                keybindLabel.BackgroundTransparency = 1.000
+                keybindLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                keybindLabel.BorderSizePixel = 0
+                keybindLabel.Size = UDim2.new(0, 150, 0, 50)
+                keybindLabel.Font = Enum.Font.SourceSans
+                keybindLabel.Text = "Fly Keybind"
+                keybindLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+                keybindLabel.TextSize = 14.000
+
+                keybindButton.Parent = keybindFrame
+                keybindButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                keybindButton.BackgroundTransparency = 1.000
+                keybindButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                keybindButton.BorderSizePixel = 0
+                keybindButton.Position = UDim2.new(0.75, 0, 0, 0)
+                keybindButton.Size = UDim2.new(0, 50, 0, 50)
+                keybindButton.Font = Enum.Font.Code
+                keybindButton.Text = oldKey
+                keybindButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+                keybindButton.TextSize = 14.000
+
+                keybindButton.MouseButton1Click:Connect(function()
+                    local a, b = game:GetService("UserInputService").InputBegan:wait()
+                    if a.KeyCode.Name ~= "Unknown" then
+                        keybindButton.Text = a.KeyCode.Name
+                        oldKey = a.KeyCode.Name
+                    end;
+                end)
+
+                game:GetService("UserInputService").InputBegan:connect(function(current, ok) 
+                    if not ok then 
+                        if current.KeyCode.Name == oldKey then 
+                            callback()
+                        end
+                    end
+                end)
+            end;
+            return Elements
+        end;
+        return Sections
+    end;
+    return Tabs
+end
+return Prosperity
