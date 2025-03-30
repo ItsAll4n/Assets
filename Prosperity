@@ -195,7 +195,7 @@ function Prosperity.CreateLib(prosName)
     tabtitle.BorderSizePixel = 0
     tabtitle.Position = UDim2.new(0.44600001, 0, -0.051282052, 0)
     tabtitle.Size = UDim2.new(0, 136, 0, 39)
-    tabtitle.Visible = false
+    tabtitle.Visible = true
     tabtitle.Font = Enum.Font.Code
     tabtitle.Text = ""
     tabtitle.TextColor3 = Color3.fromRGB(255, 255, 255)
@@ -262,7 +262,7 @@ function Prosperity.CreateLib(prosName)
         pageListing.Name = "pageListing"
         pageListing.Parent = Page
         pageListing.SortOrder = Enum.SortOrder.LayoutOrder
-        pageListing.Padding = UDim.new(0, 210)
+        pageListing.Padding = UDim.new(0, 5)
 
         tabButton.Name = tabName.."TabButton"
         tabButton.Parent = tabFrames
@@ -694,6 +694,7 @@ function Prosperity.CreateLib(prosName)
 
                 UIListLayout.Parent = dropFrame
                 UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+                UIListLayout.Padding = UDim.new(0, 1)
 
                 dropOpenbtn.Name = "dropOpen"
                 dropOpenbtn.Parent = dropFrame
