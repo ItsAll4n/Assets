@@ -857,7 +857,7 @@ function Prosperity.CreateLib(prosName)
                 keybindElement.TextSize = 14.000
                 keybindElement.MouseButton1Click:connect(function(e) 
                     if not focusing then
-                        bind.Text = ". . ."
+                        bind.Text = "..."
                         local a, b = game:GetService('UserInputService').InputBegan:wait();
                         if a.KeyCode.Name ~= "Unknown" then
                             bind.Text = a.KeyCode.Name
