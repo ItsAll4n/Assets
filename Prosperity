@@ -313,6 +313,7 @@ function Prosperity.CreateLib(prosName)
         if first then
             first = false
             tabHolder.Visible = true
+            sectionHead.Visible = true
             Page.Visible = true
             Page2.Visible = true
             tabtitle.Text = tabName
@@ -320,6 +321,7 @@ function Prosperity.CreateLib(prosName)
             UpdateSize()
         else
             tabHolder.Visible = false
+            sectionHead.Visible = false
             Page.Visible = false
             Page2.Visible = false
             tabButton.BackgroundTransparency = 1
@@ -337,6 +339,7 @@ function Prosperity.CreateLib(prosName)
                 v.Visible = false
                 tabtitle.Text = ""
             end
+            sectionHead.Visible = true
             tabHolder.Visible = true
             Page.Visible = true
             tabtitle.Text = tabName
