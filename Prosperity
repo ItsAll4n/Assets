@@ -507,11 +507,11 @@ function Prosperity.CreateLib(prosName)
                 touch.Parent = buttonElement
                 touch.BackgroundTransparency = 1.000
                 touch.Position = UDim2.new(0.0199999996, 0, 0.143000007, 0)
-                touch.Size = UDim2.new(0, 24, 0, 24)
-                touch.Image = "rbxassetid://6764432293"
+                touch.Size = UDim2.new(0, 20, 0, 20)
+                touch.Image = "rbxassetid://8445470392"
                 touch.ImageColor3 = Color3.fromRGB(155, 155, 155)
-                touch.ImageRectOffset = Vector2.new(100, 700)
-                touch.ImageRectSize = Vector2.new(100, 100)
+                touch.ImageRectOffset = Vector2.new(504, 504)
+                touch.ImageRectSize = Vector2.new(96, 96)
 
                 coverup.Name = "coverup"
                 coverup.Parent = buttonElement
@@ -940,10 +940,10 @@ function Prosperity.CreateLib(prosName)
                 letter.BackgroundTransparency = 1.000
                 letter.Position = UDim2.new(0.0299999993, 0, 0.200142995, 0)
                 letter.Size = UDim2.new(0, 20, 0, 20)
-                letter.Image = "rbxassetid://8445470559"
+                letter.Image = "rbxassetid://3926305904"
                 letter.ImageColor3 = Color3.fromRGB(155, 155, 155)
-                letter.ImageRectOffset = Vector2.new(4, 404)
-                letter.ImageRectSize = Vector2.new(96, 96)
+                letter.ImageRectOffset = Vector2.new(364, 284)
+                letter.ImageRectSize = Vector2.new(36, 36)
 
                 coverup.Name = "coverup"
                 coverup.Parent = keybindElement
