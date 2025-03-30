@@ -62,7 +62,7 @@ function Prosperity.CreateLib(prosName)
     table.insert(Prosperity, prosName)
 
     for i,v in pairs(game.CoreGui:GetChildren()) do
-        if v:IsA("ScreenGui") and v.Name == LibName then
+        if v:IsA("ScreenGui") and v.Name == prosName then
             v:Destroy()
         end
     end
@@ -284,7 +284,6 @@ function Prosperity.CreateLib(prosName)
             UpdateSize()
         else
             Page.Visible = false
-            tabtitle.Text = ""
             tabButton.BackgroundTransparency = 1
         end
 
