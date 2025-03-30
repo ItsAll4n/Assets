@@ -90,6 +90,7 @@ function Prosperity.CreateLib(prosName)
     Prosperity:EnableDrag(MainHeader, Main)
 
     ScreenGui.Parent = game.CoreGui
+    ScreenGui.Name = LibName
     ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     ScreenGui.ResetOnSpawn = false
 
