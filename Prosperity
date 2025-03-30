@@ -372,7 +372,7 @@ function Prosperity.CreateLib(prosName)
             sectionFrame.Name = "sectionFrame"
             if bool == "1" then
                 sectionFrame.Parent = Page
-            elseif bool = "2" then
+            elseif bool == "2" then
                 sectionFrame.Parent = Page2
             end
             sectionFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
