@@ -961,10 +961,11 @@ function Prosperity.CreateLib(prosName)
                 bind.BorderColor3 = Color3.fromRGB(0, 0, 0)
                 bind.BorderSizePixel = 0
                 bind.Position = UDim2.new(0.836000383, 0, 0.120000347, 0)
-                bind.Size = UDim2.new(0, 30, 0, 24)
+                bind.Size = UDim2.new(0, 50, 0, 24)
                 bind.Font = Enum.Font.Code
                 bind.Text = oldKey
                 bind.TextColor3 = Color3.fromRGB(155, 155, 155)
+                bind.TextScaled = true
                 bind.TextSize = 14.000
 
                 updateSectionFrame()
