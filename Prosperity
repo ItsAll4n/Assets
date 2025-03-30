@@ -324,7 +324,7 @@ function Prosperity.CreateLib(prosName)
             end
 
             sectionFrame.Name = "sectionFrame"
-            sectionFrame.Parent = game.StarterGui.InsertedObjects.Page
+            sectionFrame.Parent = Page
             sectionFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             sectionFrame.BackgroundTransparency = 1.000
             sectionFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
@@ -584,7 +584,7 @@ function Prosperity.CreateLib(prosName)
                 local toggleDisabled = Instance.new("ImageLabel")
 
                 toggleElement.Name = "toggleElement"
-                toggleElement.Parent = game.StarterGui.InsertedObjects
+                toggleElement.Parent = sectionInners
                 toggleElement.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
                 toggleElement.BackgroundTransparency = 0.500
                 toggleElement.BorderColor3 = Color3.fromRGB(0, 0, 0)
