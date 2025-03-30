@@ -789,9 +789,8 @@ function Prosperity.CreateLib(prosName)
                     optionSelect.BorderColor3 = Color3.fromRGB(0, 0, 0)
                     optionSelect.BorderSizePixel = 0
                     optionSelect.Size = UDim2.new(0, 200, 0, 35)
-                    optionSelect.Visible = false
                     optionSelect.Font = Enum.Font.SourceSans
-                    optionSelect.Text = "  "..v
+                    optionSelect.Text = ""
                     optionSelect.TextColor3 = Color3.fromRGB(0, 0, 0)
                     optionSelect.TextSize = 14.000
                     optionSelect.ClipsDescendants = true
@@ -806,7 +805,6 @@ function Prosperity.CreateLib(prosName)
                             UpdateSize()       
                         end
                     end)
-
 
                     coverup.Name = "coverup"
                     coverup.Parent = optionSelect
@@ -826,7 +824,7 @@ function Prosperity.CreateLib(prosName)
                     optionInfo.Position = UDim2.new(0.171000004, 0, 0.119999997, 0)
                     optionInfo.Size = UDim2.new(0, 165, 0, 24)
                     optionInfo.Font = Enum.Font.Code
-                    optionInfo.Text = "God-Mode"
+                    optionInfo.Text = "  "..v
                     optionInfo.TextColor3 = Color3.fromRGB(155, 155, 155)
                     optionInfo.TextSize = 14.000
                     optionInfo.TextXAlignment = Enum.TextXAlignment.Left
