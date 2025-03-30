@@ -278,7 +278,7 @@ function Prosperity.CreateLib(prosName)
         if first then
             first = false
             Page.Visible = true
-            tabtitle.Text = secName
+            tabtitle.Text = tabName
             tabButton.BackgroundTransparency = 0.8
             UpdateSize()
         else
