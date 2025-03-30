@@ -235,9 +235,26 @@ function Prosperity.CreateLib(prosName)
     function Tabs:NewTab(tabName)
         tabName = tabName or "Tab"
 
+        local tabHolder = Instance.new("Frame")
+        local UIListLayout = Instance.new("UIListLayout")
         local tabButton = Instance.new("TextButton")
         local Page = Instance.new("ScrollingFrame")
         local pageListing = Instance.new("UIListLayout")
+        local Page2 = Instance.new("ScrollingFrame")
+        local pageListing2 = Instance.new("UIListLayout")
+
+        tabHolder.Parent = Pages
+        tabHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        tabHolder.BackgroundTransparency = 1.000
+        tabHolder.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        tabHolder.BorderSizePixel = 0
+        tabHolder.Position = UDim2.new(0, 0, -0.00493827183, 0)
+        tabHolder.Size = UDim2.new(0, 410, 0, 405)
+
+        UIListLayout.Parent = tabHolder
+        UIListLayout.FillDirection = Enum.FillDirection.Horizontal
+        UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+        UIListLayout.Padding = UDim.new(0, 8)
 
         local function UpdateSize()
             local cS = pageListing.AbsoluteContentSize
@@ -248,7 +265,7 @@ function Prosperity.CreateLib(prosName)
         end
 
         Page.Name = "Page"
-        Page.Parent = Pages
+        Page.Parent = tabHolder
         Page.Active = true
         Page.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         Page.BackgroundTransparency = 1.000
@@ -263,6 +280,23 @@ function Prosperity.CreateLib(prosName)
         pageListing.Parent = Page
         pageListing.SortOrder = Enum.SortOrder.LayoutOrder
         pageListing.Padding = UDim.new(0, 5)
+
+        Page2.Name = "Page2"
+        Page2.Parent = tabHolder
+        Page2.Active = true
+        Page2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        Page2.BackgroundTransparency = 1.000
+        Page2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+        Page2.BorderSizePixel = 0
+        Page2.Position = UDim2.new(0, 0, -3.76760241e-08, 0)
+        Page2.Size = UDim2.new(0, 200, 0, 405)
+        Page2.ScrollBarThickness = 0
+        Page2.Visible = false
+
+        pageListing2.Name = "pageListing2"
+        pageListing2.Parent = Page
+        pageListing2.SortOrder = Enum.SortOrder.LayoutOrder
+        pageListing2.Padding = UDim.new(0, 5)
 
         tabButton.Name = tabName.."TabButton"
         tabButton.Parent = tabFrames
@@ -305,8 +339,9 @@ function Prosperity.CreateLib(prosName)
         local focusing = false
         local viewDe = false
 
-        function Sections:NewSection(secName, hidden)
+        function Sections:NewSection(secName, hidden, bool)
             secName = secName or "Section"
+            bool = bool or 1
             local sectionFunctions = {}
             local modules = {}
             hidden = hidden or false
@@ -328,7 +363,11 @@ function Prosperity.CreateLib(prosName)
             end
 
             sectionFrame.Name = "sectionFrame"
-            sectionFrame.Parent = Page
+            if bool == 1 then
+                sectionFrame.Parent = Page
+            elseif bool = 2 then
+                sectionFrame.Parent = Page2
+            end
             sectionFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
             sectionFrame.BackgroundTransparency = 1.000
             sectionFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
