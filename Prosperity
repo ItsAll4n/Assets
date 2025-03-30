@@ -62,7 +62,7 @@ function Prosperity.CreateLib(prosName)
     table.insert(Prosperity, prosName)
 
     for i,v in pairs(game.CoreGui:GetChildren()) do
-        if v:IsA("ScreenGui") and v.Name == prosName then
+        if v:IsA("ScreenGui") and v.Name == LibName then
             v:Destroy()
         end
     end
