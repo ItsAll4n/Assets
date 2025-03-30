@@ -278,24 +278,24 @@ function Prosperity.CreateLib(prosName)
 
         if first then
             first = false
-            page.Visible = true
+            Page.Visible = true
             tabButton.BackgroundTransparency = 0.8
             UpdateSize()
         else
-            page.Visible = false
+            Page.Visible = false
             tabButton.BackgroundTransparency = 1
         end
 
         UpdateSize()
-        page.ChildAdded:Connect(UpdateSize)
-        page.ChildRemoved:Connect(UpdateSize)
+        Page.ChildAdded:Connect(UpdateSize)
+        Page.ChildRemoved:Connect(UpdateSize)
 
         tabButton.MouseButton1Click:Connect(function()
             UpdateSize()
             for i, v in next, Pages:GetChildren() do
                 v.Visible = false
             end
-            page.Visible = true
+            Page.Visible = true
         end)
         
         local Sections = {}
