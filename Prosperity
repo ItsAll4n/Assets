@@ -37,10 +37,6 @@ function Prosperity:EnableDrag(frame, parent)
     end)
 end
 
-function Utility:TweenObject(obj, properties, duration, ...)
-    TweenService:Create(obj, tweeninfo(duration, ...), properties):Play()
-end
-
 local SettingsT = {}
 local Name = "ProsperityConfig.JSON"
 
