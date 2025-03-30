@@ -334,8 +334,10 @@ function Prosperity.CreateLib(prosName)
         tabButton.MouseButton1Click:Connect(function()
             UpdateSize()
             for i, v in next, Pages:GetChildren() do
-                v.Visible = false
-                tabtitle.Text = ""
+                if v.Name ~= "sectionHead" then
+                    v.Visible = false
+                    tabtitle.Text = ""
+                end
             end
             tabHolder.Visible = true
             Page.Visible = true
@@ -347,12 +349,11 @@ function Prosperity.CreateLib(prosName)
         local focusing = false
         local viewDe = false
 
-        function Sections:NewSection(secName, hidden, bool)
+        function Sections:NewSection(secName, bool)
             secName = secName or "Section"
             bool = bool or "1"
             local sectionFunctions = {}
             local modules = {}
-            hidden = hidden or false
 
             local sectionFrame = Instance.new("Frame")
             local sectionlistoknvm = Instance.new("UIListLayout")
@@ -363,12 +364,6 @@ function Prosperity.CreateLib(prosName)
             local sectionInners = Instance.new("Frame")
             local sectionListing = Instance.new("UIListLayout")
             local sInnerCorner = Instance.new("UICorner")
-
-            if hidden then
-                sectionHead.Visible = false
-            else
-                sectionHead.Visible = true
-            end
 
             sectionFrame.Name = "sectionFrame"
             if bool == "1" then
