@@ -342,6 +342,7 @@ function Prosperity.CreateLib(prosName)
             sectionHead.Visible = true
             tabHolder.Visible = true
             Page.Visible = true
+            Page2.Visible = true
             tabtitle.Text = tabName
         end)
         
