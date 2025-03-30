@@ -433,7 +433,9 @@ function Prosperity.CreateLib(Prosperityname)
                 Check.ImageRectSize = Vector2.new(96, 96)
                 Check.Visible = false
 
-                togButton.MouseButton1Click(function()
+                local btn = togButton
+
+                btn.MouseButton1Click(function()
                     if not toggled then
                         Check.Visible = true
                     else
