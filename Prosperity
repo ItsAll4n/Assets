@@ -262,6 +262,12 @@ function Prosperity.CreateLib(prosName)
             game.TweenService:Create(Page, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                 CanvasSize = UDim2.new(0,cS.X,0,cS.Y)
             }):Play()
+             
+            local cS = pageListing2.AbsoluteContentSize
+
+            game.TweenService:Create(Page2, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+                CanvasSize = UDim2.new(0,cS.X,0,cS.Y)
+            }):Play()
         end
 
         Page.Name = "Page"
