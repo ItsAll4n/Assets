@@ -966,6 +966,7 @@ function Prosperity.CreateLib(prosName)
                 bind.Text = oldKey
                 bind.TextColor3 = Color3.fromRGB(155, 155, 155)
                 bind.TextSize = 12.000
+                bind.TextXAlignment = Enum.TextXAlignment.Right
 
                 updateSectionFrame()
                 UpdateSize()
