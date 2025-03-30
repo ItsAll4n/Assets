@@ -296,8 +296,10 @@ function Prosperity.CreateLib(prosName)
             UpdateSize()
             for i, v in next, Pages:GetChildren() do
                 v.Visible = false
+                tabtitle.Text = ""
             end
             Page.Visible = true
+            tabtitle.Text = tabName
         end)
         
         local Sections = {}
