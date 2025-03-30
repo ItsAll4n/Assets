@@ -294,7 +294,7 @@ function Prosperity.CreateLib(prosName)
         Page2.Visible = false
 
         pageListing2.Name = "pageListing2"
-        pageListing2.Parent = Page
+        pageListing2.Parent = Page2
         pageListing2.SortOrder = Enum.SortOrder.LayoutOrder
         pageListing2.Padding = UDim.new(0, 5)
 
@@ -365,7 +365,7 @@ function Prosperity.CreateLib(prosName)
             sectionFrame.Name = "sectionFrame"
             if bool == "1" then
                 sectionFrame.Parent = Page
-            elseif bool == "2" then
+            elseif bool = "2" then
                 sectionFrame.Parent = Page2
             end
             sectionFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
