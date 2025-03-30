@@ -827,97 +827,97 @@ function Prosperity.CreateLib(prosName)
                     optionInfo.TextSize = 14.000
                     optionInfo.TextXAlignment = Enum.TextXAlignment.Left
                 end
+            end
 
-                function Elements:NewKeybind(keytext, first, callback)
-                    keytext = keytext or "KeybindText"
-                    callback = callback or function() end
-                    local oldKey = first.Name
+            function Elements:NewKeybind(keytext, first, callback)
+                keytext = keytext or "KeybindText"
+                callback = callback or function() end
+                local oldKey = first.Name
 
-                    local keybindElement = Instance.new("TextButton")
-                    local bindName = Instance.new("TextLabel")
-                    local letter = Instance.new("ImageLabel")
-                    local coverup = Instance.new("Frame")
-                    local bind = Instance.new("TextLabel")
+                local keybindElement = Instance.new("TextButton")
+                local bindName = Instance.new("TextLabel")
+                local letter = Instance.new("ImageLabel")
+                local coverup = Instance.new("Frame")
+                local bind = Instance.new("TextLabel")
 
-                    keybindElement.Name = "keybindElement"
-                    keybindElement.Parent = sectionInners
-                    keybindElement.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-                    keybindElement.BackgroundTransparency = 0.500
-                    keybindElement.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                    keybindElement.BorderSizePixel = 0
-                    keybindElement.Size = UDim2.new(0, 200, 0, 35)
-                    keybindElement.Font = Enum.Font.SourceSans
-                    keybindElement.Text = ""
-                    keybindElement.TextColor3 = Color3.fromRGB(0, 0, 0)
-                    keybindElement.TextSize = 14.000
-                    keybindElement.MouseButton1Click:connect(function(e) 
-                        if not focusing then
-                            bindName.Text = ". . ."
-                            local a, b = game:GetService('UserInputService').InputBegan:wait();
-                            if a.KeyCode.Name ~= "Unknown" then
-                                bindName.Text = a.KeyCode.Name
-                                oldKey = a.KeyCode.Name;
-                            end
+                keybindElement.Name = "keybindElement"
+                keybindElement.Parent = sectionInners
+                keybindElement.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+                keybindElement.BackgroundTransparency = 0.500
+                keybindElement.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                keybindElement.BorderSizePixel = 0
+                keybindElement.Size = UDim2.new(0, 200, 0, 35)
+                keybindElement.Font = Enum.Font.SourceSans
+                keybindElement.Text = ""
+                keybindElement.TextColor3 = Color3.fromRGB(0, 0, 0)
+                keybindElement.TextSize = 14.000
+                keybindElement.MouseButton1Click:connect(function(e) 
+                    if not focusing then
+                        bindName.Text = ". . ."
+                        local a, b = game:GetService('UserInputService').InputBegan:wait();
+                        if a.KeyCode.Name ~= "Unknown" then
+                            bindName.Text = a.KeyCode.Name
+                            oldKey = a.KeyCode.Name;
                         end
-                    end)
+                    end
+                end)
 
-                    UserInputService.InputBegan:connect(function(current, ok) 
-                        if not ok then 
-                            if current.KeyCode.Name == oldKey then 
-                                callback()
-                            end
+                UserInputService.InputBegan:connect(function(current, ok) 
+                    if not ok then 
+                        if current.KeyCode.Name == oldKey then 
+                            callback()
                         end
-                    end)
-    
-                    bindName.Name = "bindName"
-                    bindName.Parent = keybindElement
-                    bindName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                    bindName.BackgroundTransparency = 1.000
-                    bindName.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                    bindName.BorderSizePixel = 0
-                    bindName.Position = UDim2.new(0.171000361, 0, 0.120000347, 0)
-                    bindName.Size = UDim2.new(0, 90, 0, 24)
-                    bindName.Font = Enum.Font.Code
-                    bindName.Text = keytext
-                    bindName.TextColor3 = Color3.fromRGB(155, 155, 155)
-                    bindName.TextSize = 14.000
-                    bindName.TextXAlignment = Enum.TextXAlignment.Left
+                    end
+                end)
 
-                    letter.Name = "letter"
-                    letter.Parent = keybindElement
-                    letter.BackgroundTransparency = 1.000
-                    letter.Position = UDim2.new(0.0299999993, 0, 0.200142995, 0)
-                    letter.Size = UDim2.new(0, 20, 0, 20)
-                    letter.Image = "rbxassetid://8445470559"
-                    letter.ImageColor3 = Color3.fromRGB(155, 155, 155)
-                    letter.ImageRectOffset = Vector2.new(4, 404)
-                    letter.ImageRectSize = Vector2.new(96, 96)
+                bindName.Name = "bindName"
+                bindName.Parent = keybindElement
+                bindName.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                bindName.BackgroundTransparency = 1.000
+                bindName.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                bindName.BorderSizePixel = 0
+                bindName.Position = UDim2.new(0.171000361, 0, 0.120000347, 0)
+                bindName.Size = UDim2.new(0, 90, 0, 24)
+                bindName.Font = Enum.Font.Code
+                bindName.Text = keytext
+                bindName.TextColor3 = Color3.fromRGB(155, 155, 155)
+                bindName.TextSize = 14.000
+                bindName.TextXAlignment = Enum.TextXAlignment.Left
 
-                    coverup.Name = "coverup"
-                    coverup.Parent = keybindElement
-                    coverup.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-                    coverup.BackgroundTransparency = 0.700
-                    coverup.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                    coverup.BorderSizePixel = 0
-                    coverup.Position = UDim2.new(0, 0, 0.922469676, 0)
-                    coverup.Size = UDim2.new(0, 200, 0, 2)
+                letter.Name = "letter"
+                letter.Parent = keybindElement
+                letter.BackgroundTransparency = 1.000
+                letter.Position = UDim2.new(0.0299999993, 0, 0.200142995, 0)
+                letter.Size = UDim2.new(0, 20, 0, 20)
+                letter.Image = "rbxassetid://8445470559"
+                letter.ImageColor3 = Color3.fromRGB(155, 155, 155)
+                letter.ImageRectOffset = Vector2.new(4, 404)
+                letter.ImageRectSize = Vector2.new(96, 96)
 
-                    bind.Name = "bind"
-                    bind.Parent = keybindElement
-                    bind.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-                    bind.BackgroundTransparency = 1.000
-                    bind.BorderColor3 = Color3.fromRGB(0, 0, 0)
-                    bind.BorderSizePixel = 0
-                    bind.Position = UDim2.new(0.836000383, 0, 0.120000347, 0)
-                    bind.Size = UDim2.new(0, 30, 0, 24)
-                    bind.Font = Enum.Font.Code
-                    bind.Text = oldKey
-                    bind.TextColor3 = Color3.fromRGB(155, 155, 155)
-                    bind.TextSize = 14.000
+                coverup.Name = "coverup"
+                coverup.Parent = keybindElement
+                coverup.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+                coverup.BackgroundTransparency = 0.700
+                coverup.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                coverup.BorderSizePixel = 0
+                coverup.Position = UDim2.new(0, 0, 0.922469676, 0)
+                coverup.Size = UDim2.new(0, 200, 0, 2)
 
-                    updateSectionFrame()
-                    UpdateSize()
-                end
+                bind.Name = "bind"
+                bind.Parent = keybindElement
+                bind.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+                bind.BackgroundTransparency = 1.000
+                bind.BorderColor3 = Color3.fromRGB(0, 0, 0)
+                bind.BorderSizePixel = 0
+                bind.Position = UDim2.new(0.836000383, 0, 0.120000347, 0)
+                bind.Size = UDim2.new(0, 30, 0, 24)
+                bind.Font = Enum.Font.Code
+                bind.Text = oldKey
+                bind.TextColor3 = Color3.fromRGB(155, 155, 155)
+                bind.TextSize = 14.000
+
+                updateSectionFrame()
+                UpdateSize()
             end
             return Elements
         end
