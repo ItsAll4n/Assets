@@ -1,5 +1,4 @@
 local Prosperity = {}
-local Utility = {}
 
 local TweenService, UserInputService, HttpService = game:GetService("TweenService"), game:GetService("UserInputService"), game:GetService("HttpService")
 
@@ -242,7 +241,7 @@ function Prosperity.CreateLib(prosName)
         local function UpdateSize()
             local cS = pageListing.AbsoluteContentSize
 
-            TweenService:Create(page, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+            game.TweenService:Create(page, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                 CanvasSize = UDim2.new(0,cS.X,0,cS.Y)
             }):Play()
         end
@@ -649,7 +648,7 @@ function Prosperity.CreateLib(prosName)
                 btn.MouseButton1Click:Connect(function()
                     if not focusing then
                         if toggled == false then
-                            TweenService:Create(img, TweenInfo.new(0.11, Enum.EasingStyle.Linear,Enum.EasingDirection.In), {
+                            game.TweenService:Create(img, TweenInfo.new(0.11, Enum.EasingStyle.Linear,Enum.EasingDirection.In), {
                                 ImageTransparency = 0
                             }):Play()
                         else
