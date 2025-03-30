@@ -271,17 +271,19 @@ function Prosperity.CreateLib(prosName)
         tabButton.BorderSizePixel = 0
         tabButton.Size = UDim2.new(0, 103, 0, 35)
         tabButton.Font = Enum.Font.Code
-        tabButton.Text = "Tweaks"
+        tabButton.Text = tabName
         tabButton.TextColor3 = Color3.fromRGB(255, 255, 255)
         tabButton.TextSize = 14.000
 
         if first then
             first = false
             Page.Visible = true
+            tabtitle.Text = secName
             tabButton.BackgroundTransparency = 0.8
             UpdateSize()
         else
             Page.Visible = false
+            tabtitle.Text = ""
             tabButton.BackgroundTransparency = 1
         end
 
@@ -710,7 +712,7 @@ function Prosperity.CreateLib(prosName)
                             opened = false
                             dropOpen.ImageTransparency = 1
                             dropClosed.ImageTransparency = 0
-                            dropFrame:TweenSize(UDim2.new(0, 352, 0, 33), "InOut", "Linear", 0.08)
+                            dropFrame:TweenSize(UDim2.new(0, 200, 0, 35), "InOut", "Linear", 0.08)
                             wait(0.1)
                             updateSectionFrame()
                             UpdateSize()
@@ -718,7 +720,7 @@ function Prosperity.CreateLib(prosName)
                             opened = true
                             dropOpen.ImageTransparency = 0
                             dropClosed.ImageTransparency = 1
-                            dropFrame:TweenSize(UDim2.new(0, 352, 0, UIListLayout.AbsoluteContentSize.Y), "InOut", "Linear", 0.08, true)
+                            dropFrame:TweenSize(UDim2.new(0, 200, 0, UIListLayout.AbsoluteContentSize.Y), "InOut", "Linear", 0.08, true)
                             wait(0.1)
                             updateSectionFrame()
                             UpdateSize()
@@ -853,10 +855,10 @@ function Prosperity.CreateLib(prosName)
                 keybindElement.TextSize = 14.000
                 keybindElement.MouseButton1Click:connect(function(e) 
                     if not focusing then
-                        bindName.Text = ". . ."
+                        bind.Text = ". . ."
                         local a, b = game:GetService('UserInputService').InputBegan:wait();
                         if a.KeyCode.Name ~= "Unknown" then
-                            bindName.Text = a.KeyCode.Name
+                            bind.Text = a.KeyCode.Name
                             oldKey = a.KeyCode.Name;
                         end
                     end
