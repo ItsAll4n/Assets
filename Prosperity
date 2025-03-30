@@ -312,18 +312,24 @@ function Prosperity.CreateLib(prosName)
 
         if first then
             first = false
+            tabHolder.Visible = true
             Page.Visible = true
+            Page2.Visible = true
             tabtitle.Text = tabName
             tabButton.BackgroundTransparency = 0.8
             UpdateSize()
         else
+            tabHolder.Visible = false
             Page.Visible = false
+            Page2.Visible = false
             tabButton.BackgroundTransparency = 1
         end
 
         UpdateSize()
         Page.ChildAdded:Connect(UpdateSize)
         Page.ChildRemoved:Connect(UpdateSize)
+        Page2.ChildAdded:Connect(UpdateSize)
+        Page2.ChildRemoved:Connect(UpdateSize)
 
         tabButton.MouseButton1Click:Connect(function()
             UpdateSize()
@@ -331,6 +337,7 @@ function Prosperity.CreateLib(prosName)
                 v.Visible = false
                 tabtitle.Text = ""
             end
+            tabHolder.Visible = true
             Page.Visible = true
             tabtitle.Text = tabName
         end)
