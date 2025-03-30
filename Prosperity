@@ -341,7 +341,7 @@ function Prosperity.CreateLib(prosName)
 
         function Sections:NewSection(secName, hidden, bool)
             secName = secName or "Section"
-            bool = bool or 1
+            bool = bool or "1"
             local sectionFunctions = {}
             local modules = {}
             hidden = hidden or false
@@ -363,9 +363,9 @@ function Prosperity.CreateLib(prosName)
             end
 
             sectionFrame.Name = "sectionFrame"
-            if bool == 1 then
+            if bool == "1" then
                 sectionFrame.Parent = Page
-            elseif bool = 2 then
+            elseif bool = "2" then
                 sectionFrame.Parent = Page2
             end
             sectionFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
