@@ -241,7 +241,7 @@ function Prosperity.CreateLib(prosName)
         local function UpdateSize()
             local cS = pageListing.AbsoluteContentSize
 
-            game.TweenService:Create(page, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
+            game.TweenService:Create(Page, TweenInfo.new(0.15, Enum.EasingStyle.Linear, Enum.EasingDirection.In), {
                 CanvasSize = UDim2.new(0,cS.X,0,cS.Y)
             }):Play()
         end
